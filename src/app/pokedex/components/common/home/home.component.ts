@@ -29,9 +29,8 @@ export class HomeComponent {
     this.pokedexService.getpokemans().subscribe((res: any) => {
       this.pokemon = res.results; // Get the first Pokémon for demonstration
       // console.log(this.pokemon);
-      this.getAllFormDetails(); // Assuming you have an "id" property in your Pokémon data
+      this.getAllFormDetails(); 
       this.applySearchFilter();
-   
     });
   }
 
@@ -100,14 +99,14 @@ export class HomeComponent {
 
   navigateToProfile(pokemon: any) {
     sessionStorage.setItem('pokemon',JSON.stringify(pokemon));
-    this.router.navigate(['/pokedex'], { state: { user: pokemon } });
-    this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd) {
-        this.routeReuseStrategy.shouldReuseRoute = function() {
-          return false;
-        };
-      }
-    });
+    this.router.navigate(['/pokedex']);
+    // this.router.events.subscribe((event: any) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.routeReuseStrategy.shouldReuseRoute = function() {
+    //       return false;
+    //     };
+    //   }
+    // });
   }
 
   onPageChange(event: any) {

@@ -3,7 +3,7 @@
         <img src="../../../../assets/images/pokemon-logo.webp" alt="Your Logo" class="pokemon-logo">
     </div>
     <div class="home-links">
-        <a class="home-link" routerLink="/home" >Home </a>
-        <a class="home-link" routerLink="/pokedex" >Pokedex</a>
+        <a class="home-link" routerLink="/home" [ngClass]="this.router.url.includes('/home') ? 'active' : ''">Home </a>
+        <a class="home-link" routerLink="/pokedex" [ngClass]="this.router.url.includes('/pokedex') ? 'active' : ''">Pokedex</a>
     </div>
 </div>

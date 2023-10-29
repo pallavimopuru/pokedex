@@ -1,14 +1,14 @@
 <div class="container mt-5 p-5">
-  <h2>Name: {{ pokemon.pokemonName }}</h2>
+  <h2>NAME:&nbsp; {{ pokemon.pokemonName.toUpperCase() }}</h2>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 my-2">
       <img
         [src]="pokemon.pokemonImg"
         alt="{{ pokemon.pokemonName }}"
         class="img-fluid pokemon-img"
       />
     </div>
-    <div class="col-md-6 details">
+    <div class="col-md-6 details my-2">
       <div><b>Pokemon Height:</b> {{ pokemon.pokemonHeight }}</div>
       <div><b>Pokemon Weight:</b> {{ pokemon.pokemonWeight }}</div>
       <div>
@@ -19,7 +19,7 @@
       <div><b>Pokemon IsBattleOnly:</b> {{ pokemon.pokemonIsBattleOnly }}</div>
       <div><b>Pokemon Order:</b> {{ pokemon.pokemonOrder }}</div>
       <div><b>Pokemon Abilities:</b> {{ pokemon.pokemonBaseAbilities }}</div>
-      <div><b>Pokemon Moves:</b> {{ pokemon.pokemonMoves }}</div>
+      <div class="word-break"><b>Pokemon Moves:</b> {{ pokemon.pokemonMoves }}</div>
       
 
     </div>
