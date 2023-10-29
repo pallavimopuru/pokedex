@@ -11,11 +11,7 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    PokedexComponent,
-    PokedexContainerComponent,
-    HeaderComponent,
-    FooterComponent
+
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,22 @@
-<app-header></app-header>
-<p>home works!</p>
-<app-footer></app-footer>
+ <!-- Add a search input -->
+ <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Pokémon" />
+  </div>
+  <div *ngIf="pokemonDetails.length > 0">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3 my-3" *ngFor="let pokemon of pokemonDetails">
+            <div class="card">
+              <img [src]="pokemon.pokemonImg" class="card-img-top" alt="{{pokemon.pokemonName}}" />
+              <div class="card-body">
+                <h5 class="card-title">{{pokemon.pokemonName}}</h5>
+                <!-- Add any additional details you want to display -->
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+ 
+  

@@ -1,0 +1,32 @@
+      /* Header container */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FF3333; /* Pokedex Red */
+        padding: 15px 12px;
+        color: #fff;
+    }
+
+    /* Left-aligned logo */
+    .logo {
+        flex: 1; /* Takes up remaining space */
+    }
+
+    /* Right-aligned home links */
+    .home-links {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* Style for home links (you can customize) */
+    .home-link {
+        margin-left: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .pokemon-logo{
+        height: 30px;
+        width: 100px;
+    }
