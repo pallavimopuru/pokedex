@@ -5,6 +5,7 @@
 }
 /* pokemon-details.component.css */
 
+
 .container {
     background-color: #f2f2f2;
     padding: 20px;
@@ -29,6 +30,14 @@
   .details div {
     margin-bottom: 10px;
   }
-  
+.details div:nth-child(odd)
+{
+    color: #8e0ac2;
+}  
+.details div:nth-child(even)
+{
+    color: #ff3c00;
+
+}
   /* Add more styles as needed */
   

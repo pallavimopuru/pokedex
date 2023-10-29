@@ -47,24 +47,27 @@ export class HomeComponent {
           const id=ability.id;
           const weight=ability.weight;
           const Base_experience=ability.base_experience;
-          const Abilities=ability.abilities[0].ability.name;
-       
+          // const Abilities=ability.abilities[0].ability.name;
+          const Abilities = ability.abilities.map((abilityInfo: any) => abilityInfo.ability.name);
+          const Moves = ability.moves.map((moveInfo:any)=>moveInfo.move.name)
           this.pokedexService
             .getPokemonDetailsForms(ability?.forms[0]?.url)
             .subscribe((formDetails: any) => {
               if (formDetails) {
+                const types = formDetails.types.map((type: any) => type.type.name); 
                 let obj = {
                   pokemonName: formDetails.pokemon.name,
                   pokemonImg: formDetails.sprites.back_default,
                   pokemonVersion:formDetails.version_group.name,
-                  pokemontypes:formDetails.types[0].type.name,
+                  pokemontypes: types, // Store all types
                   pokemonOrder:formDetails.order,
                   pokemonIsBattleOnly:formDetails.is_battle_only,
                   pokemonHeight: height, // Include the "height" property in your object
                   pokemonId:id,
                   pokemonWeight:weight,
                   pokemonBase_experience:Base_experience,
-                  pokemonBaseAbilities:Abilities
+                  pokemonBaseAbilities:Abilities,
+                  pokemonMoves:Moves
                   
                 };
                 this.pokemonDetails.push(obj);
