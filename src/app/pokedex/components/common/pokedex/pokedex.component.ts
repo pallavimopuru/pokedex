@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokedex.component.scss']
 })
 export class PokedexComponent {
+  storedData:any;
+constructor(){
+
+}
+ngOnInit(){
+
+}
 
 }

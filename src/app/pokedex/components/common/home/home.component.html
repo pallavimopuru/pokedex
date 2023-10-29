@@ -1,15 +1,32 @@
  <!-- Add a search input -->
- <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Pokémon" />
-  </div>
-  <div *ngIf="pokemonDetails.length > 0">
-    <div class="container">
+ <div class="conatiner">
+     <div class="form-group my-4 align-end col-md-3">
+        <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="search"
+        placeholder="Search Pokémon"
+        (input)="applySearchFilter()"
+      />
+      
+      </div>
+ </div>
+  <div class="container overflow-x">
+    <div *ngIf="filteredPokemonDetails.length > 0">
+
         <div class="row">
-          <div class="col-md-3 my-3" *ngFor="let pokemon of pokemonDetails">
+            <div class="col-md-3 my-3" *ngFor="let pokemon of filteredPokemonDetails">
+
             <div class="card">
-              <img [src]="pokemon.pokemonImg" class="card-img-top" alt="{{pokemon.pokemonName}}" />
+                    <img  (click)="onclickimg()" [src]="pokemon.pokemonImg" class="card-img-top cursor" alt="{{pokemon.pokemonName}}" />
+                  
               <div class="card-body">
-                <h5 class="card-title">{{pokemon.pokemonName}}</h5>
+                <h5 class="card-title"><b>Name:</b>{{pokemon.pokemonName}}</h5>
+               <div class="space-between">
+               <div><b>ID:</b>&nbsp;{{pokemon.pokemonId}}</div>
+               <div><b>Height:</b>&nbsp;{{pokemon.pokemonHeight}}</div>
+            </div> 
+
                 <!-- Add any additional details you want to display -->
               </div>
             </div>
