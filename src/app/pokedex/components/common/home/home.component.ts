@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { PokedexService } from 'src/app/shared/service/pokedex.service';
 
 @Component({
@@ -14,12 +14,14 @@ export class HomeComponent {
   spriteUrl: string = '';
   currentPage: number = 1;
   filteredPokemonDetails: any[] = [];
-
+  types:any[]=[];
+  type:any={}
   first: number = 0;
 
   rows: number = 10;
   search: any;
   searchText: any;
+  routeReuseStrategy: any;
 
   constructor(private pokedexService: PokedexService,private router:Router) {}
 
@@ -43,6 +45,10 @@ export class HomeComponent {
         if (ability) {
           const height = ability.height; // Access the "height" property
           const id=ability.id;
+          const weight=ability.weight;
+          const Base_experience=ability.base_experience;
+          const Abilities=ability.abilities[0].ability.name;
+       
           this.pokedexService
             .getPokemonDetailsForms(ability?.forms[0]?.url)
             .subscribe((formDetails: any) => {
@@ -50,8 +56,16 @@ export class HomeComponent {
                 let obj = {
                   pokemonName: formDetails.pokemon.name,
                   pokemonImg: formDetails.sprites.back_default,
+                  pokemonVersion:formDetails.version_group.name,
+                  pokemontypes:formDetails.types[0].type.name,
+                  pokemonOrder:formDetails.order,
+                  pokemonIsBattleOnly:formDetails.is_battle_only,
                   pokemonHeight: height, // Include the "height" property in your object
-                  pokemonId:id
+                  pokemonId:id,
+                  pokemonWeight:weight,
+                  pokemonBase_experience:Base_experience,
+                  pokemonBaseAbilities:Abilities
+                  
                 };
                 this.pokemonDetails.push(obj);
               }
@@ -81,10 +95,16 @@ export class HomeComponent {
     }
   }
 
-  onclickimg(){
-    this.router.navigateByUrl('/pokedex');
-    // After setting details in pokemonDetails
-
+  navigateToProfile(pokemon: any) {
+    sessionStorage.setItem('pokemon',JSON.stringify(pokemon));
+    this.router.navigate(['/pokedex'], { state: { user: pokemon } });
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.routeReuseStrategy.shouldReuseRoute = function() {
+          return false;
+        };
+      }
+    });
   }
 
   onPageChange(event: any) {

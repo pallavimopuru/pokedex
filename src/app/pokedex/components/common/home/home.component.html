@@ -15,10 +15,10 @@
     <div *ngIf="filteredPokemonDetails.length > 0">
 
         <div class="row">
-            <div class="col-md-3 my-3" *ngFor="let pokemon of filteredPokemonDetails">
+            <div class="col-md-3 my-3" *ngFor="let pokemon of filteredPokemonDetails" (click)="navigateToProfile(pokemon)">
 
             <div class="card">
-                    <img  (click)="onclickimg()" [src]="pokemon.pokemonImg" class="card-img-top cursor" alt="{{pokemon.pokemonName}}" />
+                    <img   [src]="pokemon.pokemonImg" class="card-img-top cursor" alt="{{pokemon.pokemonName}}" />
                   
               <div class="card-body">
                 <h5 class="card-title"><b>Name:</b>{{pokemon.pokemonName}}</h5>

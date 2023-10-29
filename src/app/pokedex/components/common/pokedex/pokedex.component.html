@@ -1,0 +1,25 @@
+<div class="container mt-5 p-5">
+  <h2>Name: {{ pokemon.pokemonName }}</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        [src]="pokemon.pokemonImg"
+        alt="{{ pokemon.pokemonName }}"
+        class="img-fluid pokemon-img"
+      />
+    </div>
+    <div class="col-md-6 details">
+      <div><b>Pokemon Height:</b> {{ pokemon.pokemonHeight }}</div>
+      <div><b>Pokemon Weight:</b> {{ pokemon.pokemonWeight }}</div>
+      <div>
+        <b>Pokemon Base_experience:</b> {{ pokemon.pokemonBase_experience }}
+      </div>
+      <div><b>Pokemon Version:</b> {{ pokemon.pokemonVersion }}</div>
+      <div><b>Pokemon Types:</b> {{ pokemon.pokemontypes }}</div>
+      <div><b>Pokemon IsBattleOnly:</b> {{ pokemon.pokemonIsBattleOnly }}</div>
+      <div><b>Pokemon Order:</b> {{ pokemon.pokemonOrder }}</div>
+      <div><b>Pokemon Abilities:</b> {{ pokemon.pokemonBaseAbilities }}</div>
+
+    </div>
+  </div>
+</div>
